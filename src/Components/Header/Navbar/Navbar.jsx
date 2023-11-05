@@ -1,12 +1,14 @@
 import { NavLink } from "react-router-dom";
 import Logo from "./Logo";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Login from "../../Login/Login";
+import { AuthContext } from "../../../Provider/AuthProvide";
 
 
 
 const Navbar = () => {
     const [isSticky, setIsSticky] = useState(false);
+    const { user, logOut, loading } = useContext(AuthContext)
 
     const activeLinkStyles = {
         color: 'white !important',    // Text color for the active link
@@ -74,10 +76,35 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="btn text-white text-lg hover:bg-blue-500  bg-blue-500 outline-none border-none normal-case text-md">Login</button>
-                    <Login></Login>
-                </div>
+                {
+                    user?.email ? <div className="navbar-end "  >
+                        <div className=" dropdown dropdown-end tooltip tooltip-left " data-tip={user.displayName}>
+                            <label tabIndex={0} className="btn btn-ghost  btn-circle avatar">
+                                <div className=" w-10 rounded-full  " >
+                                    <img src={user.photoURL} alt={user.displayName} />
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-purple-800 rounded-box w-60">
+                                <li className="">
+                                    <button className="btn btn-sm text-white btn-ghost normal-case hover:text-white hover:bg-purple-500">{user.displayName}</button>
+                                </li>
+                                <li>
+                                    <button className="btn btn-sm text-white normal-case hover:bg-purple-500  btn-ghost hover:text-white"
+                                        onClick={logOut}
+                                    >Logout</button>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div> : <div className="navbar-end">
+                        {loading ? <span className="loading loading-spinner loading-sm"></span> : <>
+                            <button onClick={() => document.getElementById('my_modal_3').showModal()} className="btn text-white text-lg hover:bg-blue-500  bg-blue-500 outline-none border-none normal-case text-md">Login</button>
+                            <Login></Login>
+                        </>
+                        }
+                    </div>
+                }
+
             </div>
 
 

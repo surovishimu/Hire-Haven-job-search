@@ -1,11 +1,38 @@
 
 import SocialLogin from "./SocialLogin";
 import Register from "./Register";
-
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvide";
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Login = () => {
+    
+    const { signIn  } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password)
+
+        signIn (email, password)
+
+            .then(() => {
+                toast.success(
+                    "Loged in successfully",
+                    {
+                        duration: 6000,
+                    }
+                );
+                navigate('/')
+
+            })
+            .catch(error => toast.error(error.message))
+        }
     return (
         <dialog id="my_modal_3" className="modal">
             <div className="modal-box">
@@ -14,7 +41,7 @@ const Login = () => {
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                 </form>
                 <h3 className="font-bold text-3xl text-center">Login to <span className="text-green-800 text-4xl">H</span>ire<span className="text-amber-500 text-4xl">H</span>aven</h3>
-                <form className="card-body">
+                <form onSubmit={handleLogin } className="card-body">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
