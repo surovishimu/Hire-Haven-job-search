@@ -32,24 +32,93 @@ const Navbar = () => {
         };
     }, []);
     const links = <>
-        <li className="text-lg mr-2 font-semibold">
-            <NavLink
-                to="/"
-                className="text-black"
-                activeStyle={activeLinkStyles}
-            >
-                Home
-            </NavLink>
-        </li>
-        <li className="text-lg mr-2 font-semibold">
-            <NavLink
-                to="/blogs"
-                className="text-black" // Set the default text color
-                activeStyle={activeLinkStyles}
-            >
-                Blog
-            </NavLink>
-        </li>
+        {
+            user?.email ? <> <li className="text-lg mr-2 font-semibold">
+                <NavLink
+                    to="/"
+                    className="text-black"
+                    activeStyle={activeLinkStyles}
+                >
+                    Home
+                </NavLink>
+            </li>
+                
+                <li className="text-lg mr-2 font-semibold">
+                    <NavLink
+                        to="/alljobs"
+                        className="text-black" // Set the default text color
+                        activeStyle={activeLinkStyles}
+                    >
+                        All Jobs
+                    </NavLink>
+                </li>
+                <li className="text-lg mr-2 font-semibold">
+                    <NavLink
+                        to="/myjobs"
+                        className="text-black" // Set the default text color
+                        activeStyle={activeLinkStyles}
+                    >
+                        My Jobs
+                    </NavLink>
+                </li>
+                <li className="text-lg mr-2 font-semibold">
+                    <NavLink
+                        to="/addajob"
+                        className="text-black" // Set the default text color
+                        activeStyle={activeLinkStyles}
+                    >
+                       Add a Job
+                    </NavLink>
+                </li>
+                <li className="text-lg mr-2 font-semibold">
+                    <NavLink
+                        to="/appliedjobs"
+                        className="text-black" // Set the default text color
+                        activeStyle={activeLinkStyles}
+                    >
+                      Applied Jobs
+                    </NavLink>
+                </li>
+                <li className="text-lg mr-2 font-semibold">
+                    <NavLink
+                        to="/blogs"
+                        className="text-black" // Set the default text color
+                        activeStyle={activeLinkStyles}
+                    >
+                        Blog
+                    </NavLink>
+                </li>
+                </> : <>
+                <li className="text-lg mr-2 font-semibold">
+                    <NavLink
+                        to="/"
+                        className="text-black"
+                        activeStyle={activeLinkStyles}
+                    >
+                        Home
+                    </NavLink>
+                </li>
+                
+                <li className="text-lg mr-2 font-semibold">
+                    <NavLink
+                        to="/alljobs"
+                        className="text-black" // Set the default text color
+                        activeStyle={activeLinkStyles}
+                    >
+                        All Jobs
+                    </NavLink>
+                </li>
+                <li className="text-lg mr-2 font-semibold">
+                    <NavLink
+                        to="/blogs"
+                        className="text-black" // Set the default text color
+                        activeStyle={activeLinkStyles}
+                    >
+                        Blog
+                    </NavLink>
+                </li>
+                </>
+        }
 
 
     </>

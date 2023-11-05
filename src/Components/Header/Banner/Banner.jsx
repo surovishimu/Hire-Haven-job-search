@@ -1,4 +1,4 @@
-
+import banner from '../../../../public/image/banner.png'
 import { FiSearch } from 'react-icons/fi';
 
 const Banner = () => {
@@ -52,7 +52,7 @@ const Banner = () => {
                             </div>
                         </div>
                         <div data-aos="zoom-out-up"
-                            data-aos-duration="2000" className='flex justify-between items-center h-20 w-52 px-4 bg-white rounded-lg shadow-lg shadow-slate-600 absolute top-28 right-6'>
+                            data-aos-duration="2000" className='flex justify-between items-center h-20 w-52 px-4 bg-white rounded-lg shadow-lg shadow-slate-600 absolute top-40 right-6'>
                             <div>
                                 <img className='h-12 p-2 bg-violet-200 rounded-full' src="https://i.ibb.co/M1nmCrx/briefcase.png" alt="" />
                             </div>
@@ -61,9 +61,8 @@ const Banner = () => {
                                 <small className='text-slate-600'>Startup</small>
                             </div>
                         </div>
-                        <img
-                            src="https://brayo.co/static/da15ee8a121c0b65611d997546f2741f/f3583/person-with-screens.png"
-                            alt="Banner Image"
+                        <img className='mt-52'
+                            src={banner}
                         />
                     </div>
 
