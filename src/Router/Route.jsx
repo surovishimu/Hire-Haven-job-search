@@ -8,6 +8,10 @@ import Myjobs from "../Pages/Myjobs/Myjobs";
 import AddAjob from "../Pages/AddAjob/AddAjob";
 import AppliedJobs from "../Pages/AppliedJobs/AppliedJobs";
 import JobDetails from "../Pages/Home/JobDetails";
+import PrivateRout from "../PrivateRoute/PrivateRoute";
+import LoginRout from "../Components/Login/LoginRout";
+import Register from "../Components/Login/Register";
+
 
 
 
@@ -23,6 +27,14 @@ const myCreatedRouter = createBrowserRouter([
 
             },
             {
+                path: '/login',
+                element:<LoginRout></LoginRout>
+            },
+            {
+                path: '/register',
+                element:<Register></Register>
+            },
+            {
                 path: '/blogs',
                 element: <Blog></Blog>,
 
@@ -34,23 +46,23 @@ const myCreatedRouter = createBrowserRouter([
             },
             {
                 path: '/myjobs',
-                element:<Myjobs></Myjobs>,
+                element: <Myjobs></Myjobs>,
 
             },
             {
                 path: '/addajob',
-                element:<AddAjob></AddAjob>,
+                element: <AddAjob></AddAjob>,
             },
             {
                 path: '/appliedjobs',
-                element:<AppliedJobs></AppliedJobs>,
+                element: <AppliedJobs></AppliedJobs>,
             },
             {
                 path: '/jobdetails/:id',
-                element:<JobDetails></JobDetails>,
-                loader:({params})=>fetch(`http://localhost:5000/categories/${params.id}`)
+                element: <PrivateRout><JobDetails></JobDetails></PrivateRout>,
+                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
             },
-        
+
 
 
 

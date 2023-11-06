@@ -1,22 +1,23 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { FaUser, FaCalendar, FaClock, FaDollarSign, FaUsers, FaArrowRight, FaMapMarker, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FaCalendar, FaDollarSign, FaMapMarker, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { VscOrganization } from 'react-icons/vsc';
+import ApplyModal from "./ApplyModal";
 
 
 const JobDetails = () => {
     const jobDetails = useLoaderData();
-    const { category, title, person_name, logo, description, skills, location, posted_date, deadline, salary_range, applicants, company_name } = jobDetails;
+    const { category, title, logo, description, skills, location, deadline, salary_range, company_name } = jobDetails;
     return (
         <>
             <div className="mt-28 mb-10 bg-blue-100 py-20 px-10">
                 <h1 className="text-center font-bold text-4xl mb-10 -mt-4">WE ARE <span className="text-amber-500 "> HIRING</span></h1>
-                <div className="flex justify-between items-center px-10 ">
+                <div className="flex lg:flex-row md:flex-col flex-col justify-between items-center px-10 ">
                     <div>
                         <img className="h-44 rounded-full" src={logo} alt="" />
                     </div>
                     <div>
                         <h1><h3 className="text-2xl font-semibold mb-5">{title}</h3></h1>
-                        <div className="flex gap-5 items-center mb-5">
+                        <div className="flex lg:flex-row md:flex-wrap flex-wrap gap-5 items-center mb-5">
                             <div className="flex items-center">
                                 <VscOrganization className="text-lg" />
                                 <p className="text-gray-600 ml-2 font-semibold">{company_name}</p>
@@ -42,7 +43,8 @@ const JobDetails = () => {
                         </div>
 
                     </div>
-                    <div><button className="btn btn-primary normal-case text-lg text-white">Apply For Job</button></div>
+                    <div><button onClick={() => document.getElementById('my_modal_5').showModal()} className="btn btn-primary normal-case text-lg text-white w-40">Apply For Job</button>
+                       <ApplyModal></ApplyModal> </div>
                 </div>
             </div>
 
@@ -55,9 +57,9 @@ const JobDetails = () => {
             </div>
 
             <h1 className="text-xl font-semibold text-center mt-10 mb-10 bg-blue-100 p-5 w-8/12 mx-auto">{skills}</h1>
-            <div className="flex justify-center items-center gap-5 mb-20">
+            <div className="flex lg:flex-row md:flex-row flex-col justify-center items-center gap-5 mb-20">
                 <p className="text-xl font-semibold">Share this job</p>
-                <div className="flex gap-5">
+                <div className="flex lg:flex-row md:flex-row flex-col gap-5">
                     <Link to={"https://www.facebook.com/"}>
                         <button className="btn bg-[#0e3f7d] text-white text-lg normal-case hover:bg-[#0e3f7d]">
                             <FaFacebook className="social-icon" />Facebook

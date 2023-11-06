@@ -18,11 +18,11 @@ const JobByCategory = () => {
             <div className=''>
                 <Tabs>
                     <TabList className="flex lg:flex-row md:flex-row flex-wrap gap-5 mb-10 justify-center items-center ">
-                        <Tab className="btn normal-case text-lg bg-purple-400">All Category</Tab>
-                        <Tab className="btn normal-case text-lg bg-purple-400">On Site Job</Tab>
-                        <Tab className="btn normal-case text-lg bg-purple-400">Remote Job</Tab>
-                        <Tab className="btn normal-case text-lg bg-purple-400">Hybrid</Tab>
-                        <Tab className="btn normal-case text-lg bg-purple-400">Part Time</Tab>
+                        <Tab className="btn normal-case text-lg bg-blue-100">All Category</Tab>
+                        <Tab className="btn normal-case text-lg bg-blue-100">On Site Job</Tab>
+                        <Tab className="btn normal-case text-lg bg-blue-100">Remote Job</Tab>
+                        <Tab className="btn normal-case text-lg bg-blue-100">Hybrid</Tab>
+                        <Tab className="btn normal-case text-lg bg-blue-100">Part Time</Tab>
                     </TabList>
 
                     <TabPanel>

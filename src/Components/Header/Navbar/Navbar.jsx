@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Logo from "./Logo";
 import { useContext, useEffect, useState } from "react";
-import Login from "../../Login/Login";
 import { AuthContext } from "../../../Provider/AuthProvide";
+
 
 
 
@@ -11,7 +11,7 @@ const Navbar = () => {
     const { user, logOut, loading } = useContext(AuthContext)
 
     const activeLinkStyles = {
-        color: 'white !important',    // Text color for the active link
+        color: 'white !important',    
         background: 'blue !important'
     };
 
@@ -167,8 +167,9 @@ const Navbar = () => {
                         </div>
                     </div> : <div className="navbar-end">
                         {loading ? <span className="loading loading-spinner loading-sm"></span> : <>
-                            <button onClick={() => document.getElementById('my_modal_3').showModal()} className="btn text-white text-lg hover:bg-blue-500  bg-blue-500 outline-none border-none normal-case text-md">Login</button>
-                            <Login></Login>
+                            <Link to={"/login"}>
+                                <button className="btn text-white text-lg hover:bg-blue-500  bg-blue-500 outline-none border-none normal-case text-md">Login</button></Link>
+                            
                         </>
                         }
                     </div>
