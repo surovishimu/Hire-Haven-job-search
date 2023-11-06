@@ -7,6 +7,7 @@ import AllJobs from "../Pages/AllJobs/AllJobs";
 import Myjobs from "../Pages/Myjobs/Myjobs";
 import AddAjob from "../Pages/AddAjob/AddAjob";
 import AppliedJobs from "../Pages/AppliedJobs/AppliedJobs";
+import JobDetails from "../Pages/Home/JobDetails";
 
 
 
@@ -44,6 +45,12 @@ const myCreatedRouter = createBrowserRouter([
                 path: '/appliedjobs',
                 element:<AppliedJobs></AppliedJobs>,
             },
+            {
+                path: '/jobdetails/:id',
+                element:<JobDetails></JobDetails>,
+                loader:({params})=>fetch(`http://localhost:5000/categories/${params.id}`)
+            },
+        
 
 
 
