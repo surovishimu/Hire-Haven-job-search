@@ -1,9 +1,11 @@
 
+
 import Banner from "../../Components/Header/Banner/Banner";
 import JobByCategory from "./JobByCategory";
 import Process from "./Process";
 import SearchCandidate from "./SearchCandidate";
 import TopCompany from "./TopCompany";
+
 
 
 const Home = () => {
@@ -15,6 +17,7 @@ const Home = () => {
             <JobByCategory></JobByCategory>
             <TopCompany></TopCompany>
             <SearchCandidate></SearchCandidate>
+          
         </div>
     );
 };

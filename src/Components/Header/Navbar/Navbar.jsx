@@ -42,7 +42,7 @@ const Navbar = () => {
                     Home
                 </NavLink>
             </li>
-                
+
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/alljobs"
@@ -67,7 +67,7 @@ const Navbar = () => {
                         className="text-black" // Set the default text color
                         activeStyle={activeLinkStyles}
                     >
-                       Add a Job
+                        Add a Job
                     </NavLink>
                 </li>
                 <li className="text-lg mr-2 font-semibold">
@@ -76,7 +76,7 @@ const Navbar = () => {
                         className="text-black" // Set the default text color
                         activeStyle={activeLinkStyles}
                     >
-                      Applied Jobs
+                        Applied Jobs
                     </NavLink>
                 </li>
                 <li className="text-lg mr-2 font-semibold">
@@ -88,7 +88,7 @@ const Navbar = () => {
                         Blog
                     </NavLink>
                 </li>
-                </> : <>
+            </> : <>
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/"
@@ -98,7 +98,7 @@ const Navbar = () => {
                         Home
                     </NavLink>
                 </li>
-                
+
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/alljobs"
@@ -117,7 +117,7 @@ const Navbar = () => {
                         Blog
                     </NavLink>
                 </li>
-                </>
+            </>
         }
 
 
