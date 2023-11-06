@@ -11,7 +11,7 @@ const Navbar = () => {
     const { user, logOut, loading } = useContext(AuthContext)
 
     const activeLinkStyles = {
-        color: 'white !important',    
+        color: 'white !important',
         background: 'blue !important'
     };
 
@@ -31,6 +31,7 @@ const Navbar = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+   
     const links = <>
         {
             user?.email ? <> <li className="text-lg mr-2 font-semibold">
@@ -52,15 +53,7 @@ const Navbar = () => {
                         All Jobs
                     </NavLink>
                 </li>
-                <li className="text-lg mr-2 font-semibold">
-                    <NavLink
-                        to="/myjobs"
-                        className="text-black" // Set the default text color
-                        activeStyle={activeLinkStyles}
-                    >
-                        My Jobs
-                    </NavLink>
-                </li>
+                
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/addajob"
@@ -68,6 +61,15 @@ const Navbar = () => {
                         activeStyle={activeLinkStyles}
                     >
                         Add a Job
+                    </NavLink>
+                </li>
+                <li className="text-lg mr-2 font-semibold">
+                    <NavLink
+                        to="/myjobs"
+                        className="text-black" // Set the default text color
+                        activeStyle={activeLinkStyles}
+                    >
+                        My Jobs
                     </NavLink>
                 </li>
                 <li className="text-lg mr-2 font-semibold">
@@ -169,7 +171,7 @@ const Navbar = () => {
                         {loading ? <span className="loading loading-spinner loading-sm"></span> : <>
                             <Link to={"/login"}>
                                 <button className="btn text-white text-lg hover:bg-blue-500  bg-blue-500 outline-none border-none normal-case text-md">Login</button></Link>
-                            
+
                         </>
                         }
                     </div>

@@ -2,6 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { FaCalendar, FaDollarSign, FaMapMarker, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { VscOrganization } from 'react-icons/vsc';
 import ApplyModal from "./ApplyModal";
+import toast from "react-hot-toast";
 
 
 const JobDetails = () => {
@@ -29,7 +30,9 @@ const JobDetails = () => {
                             </div>
                             <div className="flex items-center">
                                 <FaCalendar className="text-lg" />
-                                <p className="text-red-600 ml-2 font-semibold"> {deadline}</p>
+                                <p className={`ml-2 font-semibold ${Date.now() > new Date(deadline).getTime() ? 'text-red-600' : 'text-green-600'}`}>
+                                    {deadline}
+                                </p>
                             </div>
                             <div className="flex items-center">
                                 <FaDollarSign className="text-lg" />
@@ -43,8 +46,22 @@ const JobDetails = () => {
                         </div>
 
                     </div>
-                    <div><button onClick={() => document.getElementById('my_modal_5').showModal()} className="btn btn-primary normal-case text-lg text-white w-40">Apply For Job</button>
-                       <ApplyModal></ApplyModal> </div>
+                    <div>
+                        <button
+                            onClick={() => {
+                                if (Date.now() > new Date(deadline).getTime()) {
+                                    toast.error("Deadline for this job has passed. You cannot apply.");
+                                } else {
+                                    document.getElementById('my_modal_5').showModal();
+                                }
+                            }}
+                            className="btn btn-primary normal-case text-lg text-white w-40"
+                        >
+                            Apply For Job
+                        </button>
+                        <ApplyModal />
+                    </div>
+
                 </div>
             </div>
 

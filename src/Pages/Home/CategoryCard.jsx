@@ -1,5 +1,8 @@
+import { useContext } from 'react';
 import { FaUser, FaCalendar, FaClock, FaDollarSign, FaUsers, FaArrowRight, FaMapMarker } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvide';
+import toast from 'react-hot-toast';
 
 const CategoryCard = ({ categoryy }) => {
     const { _id,
@@ -12,6 +15,20 @@ const CategoryCard = ({ categoryy }) => {
         salary_range,
         applicants,
     } = categoryy;
+
+    const { user } = useContext(AuthContext)
+    const handleViewDetails = () => {
+        if (!user) {
+
+            toast("Please log in to view details", {
+                icon: '🔒',
+                style: {
+                    backgroundColor: 'red',
+                    color: 'white',
+                },
+            });
+        }
+    };
     return (
         <div className="bg-gradient-to-br from-purple-200 to-blue-200 rounded-lg p-4 shadow-lg px-5 pt-5">
             <div className="flex justify-between items-center gap-4 mb-5">
@@ -39,7 +56,11 @@ const CategoryCard = ({ categoryy }) => {
                 </div>
                 <div className="flex items-center">
                     <FaCalendar className="text-primary" />
-                    <p className="text-gray-600 ml-2 font-semibold"><span className='font-bold'>Deadline:</span>  <span className='text-red-500'>{deadline}</span></p>
+                    <p className={`text-gray-600 ml-2 font-semibold ${Date.now() > new Date(deadline).getTime() ? 'text-red-600' : 'text-green-600'}`}>
+                        <span className='font-bold'>Deadline:</span> <span className={Date.now() > new Date(deadline).getTime() ? 'text-red-500' : 'text-green-500'}>
+                            {deadline}
+                        </span>
+                    </p>
                 </div>
                 <div className="flex items-center">
                     <FaDollarSign className="text-primary" />
@@ -57,7 +78,7 @@ const CategoryCard = ({ categoryy }) => {
             </div>
             <div className='flex items-center justify-end'>
                 <Link to={`/jobdetails/${_id}`}>
-                    <button className="mt-4 px-4 py-2 bg-primary text-white rounded-full flex items-center ">
+                    <button onClick={handleViewDetails} className="mt-4 px-4 py-2 bg-primary text-white rounded-full flex items-center ">
                         View Details <FaArrowRight className="ml-2" />
                     </button></Link>
             </div>
