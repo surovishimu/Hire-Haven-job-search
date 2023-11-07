@@ -7,8 +7,8 @@ const PrivateRout = ({ children }) => {
     const { user, loading } = useContext(AuthContext)
     const location = useLocation();
     if (loading) return (
-        <div className="flex justify-center">
-            <span className="loading loading-spinner text-black loading-lg mt-56 mb-52"></span>
+        <div className="flex justify-center bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 ">
+             <span className="loading loading-spinner loading-lg h-screen flex items-center justify-center"></span>
         </div>
     );
     if (!user) {

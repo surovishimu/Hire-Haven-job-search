@@ -4,12 +4,16 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvide";
+import { useLoaderData } from "react-router-dom";
 
 
-const AddAjob = () => {
+const UpdateJob = () => {
+    const updatedJob = useLoaderData();
+    console.log(updatedJob);
+    const { _id, category, title, logo, description, skills, location, salary_range, company_name } = updatedJob;
     const [selectedDate, setSelectedDate] = useState(new Date());
     const { user } = useContext(AuthContext)
-    const handleAddJob = (e) => {
+    const handleUpdate = (e) => {
         e.preventDefault();
         const form = e.target;
         const image = form.image.value;
@@ -24,7 +28,7 @@ const AddAjob = () => {
         const skills = form.skills.value;
         const company_name = form.company_name.value;
         const location = form.location.value;
-        const email = user.email;
+
 
 
         // console.log(image, title, name, category, salary, postingDate, description, skills, deadline);
@@ -41,14 +45,12 @@ const AddAjob = () => {
             applicants: applicantNumber,
             skills,
             company_name,
-            location,
-            email
-
+            location
 
         }
 
-        fetch('http://localhost:5000/categories', {
-            method: 'POST',
+        fetch(`http://localhost:5000/categories/${_id}`, {
+            method: 'PUT',
             headers: {
                 "Content-Type": "application/json",
             },
@@ -57,10 +59,10 @@ const AddAjob = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedId) {
+                if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Your Job Posted successfully',
+                        text: 'Product updated successfully',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                     })
@@ -75,13 +77,14 @@ const AddAjob = () => {
             </div>
             <div className="mx-auto mt-28 mb-10 p-5 bg-white rounded-lg shadow-2xl ">
 
-                <form onSubmit={handleAddJob} className="">
+                <form onSubmit={handleUpdate} className="">
                     <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
                         <div className="mb-4">
                             <label htmlFor="image" className="block text-gray-700 font-bold">
                                 Banner Image
                             </label>
                             <input
+                                defaultValue={logo}
                                 type="text"
                                 id="image"
                                 name="image"
@@ -93,6 +96,7 @@ const AddAjob = () => {
                                 Company Name
                             </label>
                             <input
+                                defaultValue={company_name}
                                 type="text"
                                 id="company_name"
                                 name="company_name"
@@ -105,7 +109,7 @@ const AddAjob = () => {
                                 Title
                             </label>
                             <input
-
+                                defaultValue={title}
                                 type="text"
                                 id="name"
                                 name="title"
@@ -130,6 +134,7 @@ const AddAjob = () => {
                                 Job Category
                             </label>
                             <select
+                                defaultValue={category}
                                 id="category"
                                 name="category"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
@@ -148,6 +153,7 @@ const AddAjob = () => {
                                 Salary range
                             </label>
                             <input
+                                defaultValue={salary_range}
                                 type="text"
                                 id="type"
                                 name="salary"
@@ -160,6 +166,7 @@ const AddAjob = () => {
                                 Job Posting Date
                             </label>
                             <input
+
                                 type="date"
                                 id="postingDate"
                                 name="postingDate"
@@ -196,6 +203,7 @@ const AddAjob = () => {
                                 Skills
                             </label>
                             <input
+                                defaultValue={skills}
                                 type="text"
                                 id="skills"
                                 name="skills"
@@ -207,6 +215,7 @@ const AddAjob = () => {
                                 Location
                             </label>
                             <input
+                                defaultValue={location}
                                 type="text"
                                 id="location"
                                 name="location"
@@ -219,6 +228,7 @@ const AddAjob = () => {
                                 Job Description
                             </label>
                             <textarea
+                                defaultValue={description}
                                 id="shortDescription"
                                 name="description"
                                 className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
@@ -235,7 +245,7 @@ const AddAjob = () => {
                             type="submit"
                             className="bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none  w-full focus:bg-green-500 text-lg"
                         >
-                            Post Job
+                            Update Job
                         </button>
                     </div>
                 </form>
@@ -244,4 +254,4 @@ const AddAjob = () => {
     );
 };
 
-export default AddAjob;
+export default UpdateJob;

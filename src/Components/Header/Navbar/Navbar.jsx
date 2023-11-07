@@ -47,7 +47,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/alljobs"
-                        className="text-black" // Set the default text color
+                        className="text-black" 
                         activeStyle={activeLinkStyles}
                     >
                         All Jobs
@@ -57,7 +57,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/addajob"
-                        className="text-black" // Set the default text color
+                        className="text-black" 
                         activeStyle={activeLinkStyles}
                     >
                         Add a Job
@@ -66,7 +66,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/myjobs"
-                        className="text-black" // Set the default text color
+                        className="text-black" 
                         activeStyle={activeLinkStyles}
                     >
                         My Jobs
@@ -75,7 +75,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/appliedjobs"
-                        className="text-black" // Set the default text color
+                        className="text-black" 
                         activeStyle={activeLinkStyles}
                     >
                         Applied Jobs
@@ -84,7 +84,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/blogs"
-                        className="text-black" // Set the default text color
+                        className="text-black" 
                         activeStyle={activeLinkStyles}
                     >
                         Blog
@@ -104,7 +104,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/alljobs"
-                        className="text-black" // Set the default text color
+                        className="text-black" 
                         activeStyle={activeLinkStyles}
                     >
                         All Jobs
@@ -113,7 +113,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/blogs"
-                        className="text-black" // Set the default text color
+                        className="text-black" 
                         activeStyle={activeLinkStyles}
                     >
                         Blog
@@ -127,7 +127,7 @@ const Navbar = () => {
     return (
         <div className="relative ">
             <div
-                className={`navbar fixed top-0 left-0 w-full z-20 px-4 ${isSticky ? 'bg-stone-200 text-black transition-all duration-1000' : ''}`}
+                className={`navbar fixed top-0 left-0 w-full z-20 px-4 ${isSticky ? 'bg-purple-800 text-black transition-all duration-1000' : ''}`}
 
                 style={{ height: isSticky ? '100px' : '' }}
             >

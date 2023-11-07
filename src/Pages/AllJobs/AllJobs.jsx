@@ -4,7 +4,8 @@ import { Link, useLoaderData } from "react-router-dom";
 const AllJobs = () => {
     const allJobs = useLoaderData();
     const [searchQuery, setSearchQuery] = useState("");
-    const [filteredJobs, setFilteredJobs] = useState(allJobs); // Initialize with all jobs
+    const [filteredJobs, setFilteredJobs] = useState(allJobs);
+
 
     const handleSearch = () => {
         const filteredData = allJobs.filter((job) =>
@@ -20,23 +21,23 @@ const AllJobs = () => {
     }
 
     return (
-        <div className="mt-20">
-            <div className="bg-base-200 h-36 ">
-                <h1 className="text-2xl font-semibold text-blue-500 text-center pt-5 mb-5">Search and Apply for Jobs</h1>
-                <div className="search-container flex items-center justify-center">
+        <div className=" bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400">
+            <div className=" h-36 pt-20 ">
+                <h1 className="text-2xl font-semibold text-white text-center pt-5 mb-5">Search and Apply for Jobs</h1>
+                <div className="search-container flex items-center justify-center ">
 
                     <input
                         type="text"
                         placeholder="Search by Job Title"
                         onChange={(event) => setSearchQuery(event.target.value)}
                         value={searchQuery}
-                        className="h-10 w-80 pl-4 outline-none"
+                        className="rounded-l-xl h-10 w-80 pl-4 outline-none "
                     />
-                    <button className="bg-blue-400 h-10 w-20" onClick={handleSearch}>Search</button>
+                    <button className="bg-purple-600 rounded-r-xl text-white h-10 w-20" onClick={handleSearch}>Search</button>
                 </div>
             </div>
             <div className="overflow-x-auto">
-                <table className="table mt-10 mb-20">
+                <table className="table mt-20 mb-20">
                     <thead>
                         <tr className="">
 
@@ -48,7 +49,7 @@ const AllJobs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        
+
                         {filteredJobs.map((item) => (
                             <tr key={item._id}>
 
@@ -77,11 +78,11 @@ const AllJobs = () => {
                                 </td>
                                 <th>
                                     <Link to={`/jobdetails/${item._id}`} >
-                                        <button className="btn btn-ghost btn-xs normal-case bg-blue-200">View Details</button></Link>
+                                        <button className="btn btn-ghost btn-xs normal-case bg-purple-300">View Details</button></Link>
                                 </th>
                             </tr>
                         ))}
-                      
+
                     </tbody>
 
                 </table>
