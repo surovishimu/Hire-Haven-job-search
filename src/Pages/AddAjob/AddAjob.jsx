@@ -20,7 +20,7 @@ const AddAjob = () => {
         const postingDate = form.postingDate.value;
         const deadline = form.deadline ? form.deadline.value : null;
         const description = form.description.value;
-        const applicantNumber = form.applicantNumber.value;
+        const applicants = parseInt(form.applicants.value);
         const skills = form.skills.value;
         const company_name = form.company_name.value;
         const location = form.location.value;
@@ -38,7 +38,7 @@ const AddAjob = () => {
             posted_date: postingDate,
             description,
             deadline,
-            applicants: applicantNumber,
+            applicants,
             skills,
             company_name,
             location,
@@ -86,7 +86,7 @@ const AddAjob = () => {
                                 type="text"
                                 id="image"
                                 name="image"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
                         <div className="mb-4">
@@ -98,7 +98,7 @@ const AddAjob = () => {
                                 type="text"
                                 id="company_name"
                                 name="company_name"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
 
@@ -111,7 +111,7 @@ const AddAjob = () => {
                                 type="text"
                                 id="name"
                                 name="title"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
                         <div className="mb-4">
@@ -124,7 +124,7 @@ const AddAjob = () => {
                                 type="text"
                                 id="name"
                                 name="person_name"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
                         <div className="mb-4">
@@ -134,7 +134,7 @@ const AddAjob = () => {
                             <select
                                 id="category"
                                 name="category"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             >
                                 <option value="On Site Job">On Site Job</option>
                                 <option value="Remote Job">Remote Job</option>
@@ -153,7 +153,7 @@ const AddAjob = () => {
                                 type="text"
                                 id="type"
                                 name="salary"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
 
@@ -165,7 +165,7 @@ const AddAjob = () => {
                                 type="date"
                                 id="postingDate"
                                 name="postingDate"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
                         <div className="mb-4">
@@ -177,7 +177,7 @@ const AddAjob = () => {
                                 onChange={(date) => setSelectedDate(date)}
                                 id="applicationDeadline"
                                 name="deadline"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
 
@@ -186,11 +186,11 @@ const AddAjob = () => {
                                 Job Applicants Number
                             </label>
                             <input
-                                type="text"
+                                type="number"
                                 id="applicant"
-                                name="applicantNumber"
+                                name="applicants"
                                 defaultValue={0}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
                         <div className="mb-4">
@@ -201,7 +201,7 @@ const AddAjob = () => {
                                 type="text"
                                 id="skills"
                                 name="skills"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
                         <div className="mb-4">
@@ -213,7 +213,7 @@ const AddAjob = () => {
                                 type="text"
                                 id="location"
                                 name="location"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
 
@@ -224,7 +224,7 @@ const AddAjob = () => {
                             <textarea
                                 id="shortDescription"
                                 name="description"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-green-700"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
                             />
                         </div>
 
@@ -236,7 +236,7 @@ const AddAjob = () => {
                     <div className="text-center">
                         <button
                             type="submit"
-                            className="bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none  w-full focus:bg-green-500 text-lg"
+                            className="bg-purple-500 text-white py-2 px-4 rounded-md hover:purple-500   w-full outline-none text-lg"
                         >
                             Post Job
                         </button>

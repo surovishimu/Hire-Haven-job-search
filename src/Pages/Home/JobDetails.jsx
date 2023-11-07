@@ -13,15 +13,15 @@ const JobDetails = () => {
     } = jobDetails;
     const { user } = useContext(AuthContext);
     return (
-        <>
-            <div className="mt-28 mb-10 bg-base-200 py-20 px-10 " >
+        <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 pt-10 pb-10">
+            <div className="mt-28 mb-10 bg-purple-300 py-20 px-10 max-w-screen-lg mx-auto rounded-xl " >
                 <div className="flex justify-center items-center">
                     <h1 className="text-center font-bold text-4xl mb-10 -mt-4 ">WE ARE <span className="text-amber-500 "> HIRING</span></h1>
                     <img className="h-24 mb-10" src={mikeimg} alt="" />
                 </div>
-                <div className="flex lg:flex-row md:flex-col flex-col justify-between items-center px-10 ">
+                <div className="flex lg:flex-row md:flex-col flex-col justify-between items-center ">
                     <div>
-                        <img className="h-44 " src={logo} alt="" />
+                        <img className="h-44 mr-10 rounded-full" src={logo} alt="" />
                     </div>
                     <div>
                         <h1><h3 className="text-2xl font-semibold mb-5">{title}</h3></h1>
@@ -104,7 +104,7 @@ const JobDetails = () => {
                 </div>
             </div>
 
-        </>
+        </div>
     );
 };
 
