@@ -4,10 +4,14 @@ import { VscOrganization } from 'react-icons/vsc';
 import ApplyModal from "./ApplyModal";
 import toast from "react-hot-toast";
 import mikeimg from "../../../public/image/megaphone.png"
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvide";
 
 const JobDetails = () => {
     const jobDetails = useLoaderData();
-    const { category, title, logo, description, skills, location, deadline, salary_range, company_name } = jobDetails;
+    const { category, title, logo, description, skills, location, deadline, salary_range, company_name, person_name
+    } = jobDetails;
+    const { user } = useContext(AuthContext);
     return (
         <>
             <div className="mt-28 mb-10 bg-base-200 py-20 px-10 " >
@@ -54,6 +58,8 @@ const JobDetails = () => {
                             onClick={() => {
                                 if (Date.now() > new Date(deadline).getTime()) {
                                     toast.error("Deadline for this job has passed. You cannot apply.");
+                                } else if (user.displayName === person_name) {
+                                    toast.error("You cannot apply for your own job.");
                                 } else {
                                     document.getElementById('my_modal_5').showModal();
                                 }

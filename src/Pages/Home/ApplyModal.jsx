@@ -16,7 +16,7 @@ const ApplyModal = () => {
         const submitData = {
             name, email, link
         }
-        const modal = document.getElementById('my_modal_5'); // Get the modal element
+        const modal = document.getElementById('my_modal_5'); 
 
         // Close the modal
         if (modal) {

@@ -24,7 +24,7 @@ const AddAjob = () => {
         const skills = form.skills.value;
         const company_name = form.company_name.value;
         const location = form.location.value;
-
+        const email = user.email;
 
 
         // console.log(image, title, name, category, salary, postingDate, description, skills, deadline);
@@ -41,7 +41,8 @@ const AddAjob = () => {
             applicants: applicantNumber,
             skills,
             company_name,
-            location
+            location,
+            email
 
 
         }

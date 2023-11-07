@@ -48,9 +48,9 @@ const AllJobs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* You can map your data and create table rows here */}
+                        
                         {filteredJobs.map((item) => (
-                            <tr key={item.id}>
+                            <tr key={item._id}>
 
                                 <td>
                                     <div className="flex items-center space-x-3">
@@ -81,7 +81,7 @@ const AllJobs = () => {
                                 </th>
                             </tr>
                         ))}
-                        {/* End of data mapping */}
+                      
                     </tbody>
 
                 </table>

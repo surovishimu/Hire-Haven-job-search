@@ -47,12 +47,12 @@ const myCreatedRouter = createBrowserRouter([
             },
             {
                 path: '/myjobs',
-                element: <Myjobs></Myjobs>,
+                element: <PrivateRout><Myjobs></Myjobs></PrivateRout>,
 
             },
             {
                 path: '/addajob',
-                element: <AddAjob></AddAjob>,
+                element: <PrivateRout><AddAjob></AddAjob></PrivateRout>,
             },
             {
                 path: '/appliedjobs',
