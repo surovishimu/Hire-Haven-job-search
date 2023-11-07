@@ -28,11 +28,11 @@ const myCreatedRouter = createBrowserRouter([
             },
             {
                 path: '/login',
-                element:<LoginRout></LoginRout>
+                element: <LoginRout></LoginRout>
             },
             {
                 path: '/register',
-                element:<Register></Register>
+                element: <Register></Register>
             },
             {
                 path: '/blogs',
@@ -42,6 +42,7 @@ const myCreatedRouter = createBrowserRouter([
             {
                 path: '/alljobs',
                 element: <AllJobs></AllJobs>,
+                loader: () => fetch('http://localhost:5000/categories')
 
             },
             {

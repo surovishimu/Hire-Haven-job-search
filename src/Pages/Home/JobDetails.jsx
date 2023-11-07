@@ -3,18 +3,21 @@ import { FaCalendar, FaDollarSign, FaMapMarker, FaFacebook, FaTwitter, FaLinkedi
 import { VscOrganization } from 'react-icons/vsc';
 import ApplyModal from "./ApplyModal";
 import toast from "react-hot-toast";
-
+import mikeimg from "../../../public/image/megaphone.png"
 
 const JobDetails = () => {
     const jobDetails = useLoaderData();
     const { category, title, logo, description, skills, location, deadline, salary_range, company_name } = jobDetails;
     return (
         <>
-            <div className="mt-28 mb-10 bg-blue-100 py-20 px-10">
-                <h1 className="text-center font-bold text-4xl mb-10 -mt-4">WE ARE <span className="text-amber-500 "> HIRING</span></h1>
+            <div className="mt-28 mb-10 bg-base-200 py-20 px-10 " >
+                <div className="flex justify-center items-center">
+                    <h1 className="text-center font-bold text-4xl mb-10 -mt-4 ">WE ARE <span className="text-amber-500 "> HIRING</span></h1>
+                    <img className="h-24 mb-10" src={mikeimg} alt="" />
+                </div>
                 <div className="flex lg:flex-row md:flex-col flex-col justify-between items-center px-10 ">
                     <div>
-                        <img className="h-44 rounded-full" src={logo} alt="" />
+                        <img className="h-44 " src={logo} alt="" />
                     </div>
                     <div>
                         <h1><h3 className="text-2xl font-semibold mb-5">{title}</h3></h1>
@@ -73,7 +76,7 @@ const JobDetails = () => {
 
             </div>
 
-            <h1 className="text-xl font-semibold text-center mt-10 mb-10 bg-blue-100 p-5 w-8/12 mx-auto">{skills}</h1>
+            <h1 className="text-xl font-semibold text-center mt-10 mb-10 bg-base-200 p-5 w-8/12 mx-auto">{skills}</h1>
             <div className="flex lg:flex-row md:flex-row flex-col justify-center items-center gap-5 mb-20">
                 <p className="text-xl font-semibold">Share this job</p>
                 <div className="flex lg:flex-row md:flex-row flex-col gap-5">
