@@ -82,6 +82,7 @@ const AddAjob = () => {
                                 Banner Image
                             </label>
                             <input
+                                required
                                 type="text"
                                 id="image"
                                 name="image"
@@ -93,6 +94,7 @@ const AddAjob = () => {
                                 Company Name
                             </label>
                             <input
+                                required
                                 type="text"
                                 id="company_name"
                                 name="company_name"
@@ -105,7 +107,7 @@ const AddAjob = () => {
                                 Title
                             </label>
                             <input
-
+                                required
                                 type="text"
                                 id="name"
                                 name="title"
@@ -207,6 +209,7 @@ const AddAjob = () => {
                                 Location
                             </label>
                             <input
+                                required
                                 type="text"
                                 id="location"
                                 name="location"

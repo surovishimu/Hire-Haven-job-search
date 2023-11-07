@@ -117,7 +117,7 @@ const Myjobs = () => {
                                             onClick={() => {
                                                 handleDelete(item._id);
                                             }}
-                                            className="btn btn-ghost lg:btn-xs md:btn-xs lg:mb-0 md:mb-2 mb-2 normal-case bg-red-200 mr-2 "
+                                            className="btn btn-ghost lg:btn-xs md:btn-xs lg:mb-0 md:mb-2 mb-2 normal-case bg-base-200 mr-2 "
                                         >
                                             Delete Job
                                         </button>

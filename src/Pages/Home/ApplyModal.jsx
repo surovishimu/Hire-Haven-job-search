@@ -1,11 +1,14 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../../Provider/AuthProvide";
 import Swal from "sweetalert2";
 
 
-const ApplyModal = () => {
+const ApplyModal = ({ jobDetails }) => {
     const { user } = useContext(AuthContext)
-    console.log(user);
+    console.log(jobDetails);
+    const { category, title, logo, description, skills, location, deadline, salary_range, company_name, person_name } = jobDetails;
+    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -13,10 +16,11 @@ const ApplyModal = () => {
         const email = form.email.value;
         const link = form.resume.value;
 
+
         const submitData = {
-            name, email, link
+            name, email, link, category, title, logo, description, skills, location, deadline, salary_range, company_name, person_name
         }
-        const modal = document.getElementById('my_modal_5'); 
+        const modal = document.getElementById('my_modal_5');
 
         // Close the modal
         if (modal) {

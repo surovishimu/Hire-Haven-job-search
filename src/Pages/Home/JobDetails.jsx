@@ -54,6 +54,7 @@ const JobDetails = () => {
 
                     </div>
                     <div>
+
                         <button
                             onClick={() => {
                                 if (Date.now() > new Date(deadline).getTime()) {
@@ -68,7 +69,7 @@ const JobDetails = () => {
                         >
                             Apply For Job
                         </button>
-                        <ApplyModal />
+                        <ApplyModal jobDetails={jobDetails}></ApplyModal>
                     </div>
 
                 </div>
