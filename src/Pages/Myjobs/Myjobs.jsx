@@ -61,7 +61,7 @@ const Myjobs = () => {
     }
 
     return (
-        <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 h-screen ">
+        <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 pb-60 ">
             {loading ? (
                 <div className="flex justify-center items-center gap-4">
                    
@@ -69,6 +69,7 @@ const Myjobs = () => {
                 </div>
             ) : myJob.length > 0 ? (
                 <div className="overflow-x-auto">
+                    <h1 className="text-center text-2xl font-semibold mt-36 -mb-20">Manage Job Listings</h1>
                     <table className="table mt-36 mb-20 max-w-screen-lg mx-auto">
                         <thead>
                             <tr className="">

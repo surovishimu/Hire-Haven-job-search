@@ -23,7 +23,7 @@ const AllJobs = () => {
     return (
         <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400">
             <div className="h-36 pt-20">
-                <h1 className="text-2xl font-semibold text-white text-center pt-5 mb-5">
+                <h1 className="text-2xl font-semibold  text-center pt-5 mb-5">
                     Search and Apply for Jobs
                 </h1>
                 <div className="search-container flex items-center justify-center">

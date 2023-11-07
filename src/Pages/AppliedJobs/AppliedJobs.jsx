@@ -1,14 +1,16 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { AuthContext } from "../../Provider/AuthProvide";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import noJobimg from "../../../public/image/cancel.png";
+import { useReactToPrint } from "react-to-print";
 
 const AppliedJobs = () => {
     const [myJob, setMyjob] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [filterCategory, setFilterCategory] = useState(""); // Add filter category state
+    const [filterCategory, setFilterCategory] = useState("");
     const { user } = useContext(AuthContext);
     const url = `http://localhost:5000/candidates?email=${user?.email}`;
+    const componentRef = useRef();
 
     useEffect(() => {
         fetch(url)
@@ -29,34 +31,42 @@ const AppliedJobs = () => {
         return currentDate > deadlineDate;
     }
 
-    // Function to filter jobs by category
     const filteredJobs = myJob.filter((item) =>
         filterCategory === "" ? true : item.category === filterCategory
     );
 
+
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
+
     return (
-        <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 h-screen">
+        <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400">
+
             {loading ? (
                 <div className="flex justify-center items-center gap-4">
                     <span className="loading loading-spinner loading-lg h-screen flex items-center justify-center"></span>
                 </div>
             ) : myJob.length > 0 ? (
-                <div className="overflow-x-auto">
+                <div className="overflow-x-auto" ref={componentRef}>
                     <div className="mb-4 text-end mr-10">
-                        <div className="mt-28 "> <label className="text-white mr-2 ">Filter by Job Category:</label></div>
-                        <select
-                            className="select select-bordered bg-white text-black mt-5 outline-none"
-                            onChange={(e) => setFilterCategory(e.target.value)}
-                            value={filterCategory}
-                        >
-                            <option value="">All</option>
-                            <option value="On Site Job">On Site Job</option>
-                            <option value="Remote Job">Remote Job</option>
-                            <option value="Hybrid">Hybrid</option>
-                            <option value="Part Time">Part Time</option>
-                        </select>
+                        <div> <div className="mt-28 ">
+                            <label className="text-white ">Filter by Job Category:</label>
+                        </div>
+                            <select
+                                className="select select-bordered bg-white text-black mt-5 outline-none"
+                                onChange={(e) => setFilterCategory(e.target.value)}
+                                value={filterCategory}
+                            >
+                                <option value="">All</option>
+                                <option value="On Site Job">On Site Job</option>
+                                <option value="Remote Job">Remote Job</option>
+                                <option value="Hybrid">Hybrid</option>
+                                <option value="Part Time">Part Time</option>
+                            </select></div>
                     </div>
-                    <table className="table mt-20 mb-20 max-w-screen-lg mx-auto">
+                    <div><h1 className="text-center text-2xl font-semibold -mt-5">Applications Dashboard</h1></div>
+                    <table className="table mt-10 mb-20 max-w-screen-lg mx-auto">
                         <thead>
                             <tr>
                                 <th>Company Name & Location</th>
@@ -86,7 +96,8 @@ const AppliedJobs = () => {
                                         <span className="font-semibold">{item.title}</span>
                                         <br />
                                         <span
-                                            className={`badge badge-ghost lg:badge-sm lg:text-sm md:text-xs text-xs w-44 md:badge-lg badge-lg ${isDeadlinePassed(item.deadline) ? 'text-red-500' : 'text-green-500'}`}
+                                            className={`badge badge-ghost lg:badge-sm lg:text-sm md:text-xs text-xs w-44 md:badge-lg badge-lg ${isDeadlinePassed(item.deadline) ? 'text-red-500' : 'text-green-500'
+                                                }`}
                                         >
                                             Deadline: {item.deadline}
                                         </span>
@@ -104,6 +115,14 @@ const AppliedJobs = () => {
                     <img className="h-10" src={noJobimg} alt="" />
                 </div>
             )}
+            <div className="text-center mt-4">
+                <button
+                    onClick={handlePrint}
+                    className="btn mb-10 -mt-10  py-2 px-4 normal-case outline-none text-lg"
+                >
+                    Download Summary (PDF)
+                </button>
+            </div>
         </div>
     );
 };
