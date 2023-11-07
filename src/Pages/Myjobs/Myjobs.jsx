@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvide";
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 
 const Myjobs = () => {
@@ -20,6 +21,33 @@ const Myjobs = () => {
 
         return currentDate > deadlineDate;
     }
+    const handleDelete = (id) => {
+        console.log(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/categories/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then((res) => res.json())
+                        .then((data) => {
+                            console.log(data);
+                            // Filter out the deleted item from the cart
+                            const remainingJob = myJob.filter(aJob => aJob._id !== id);
+                            setMyjob(remainingJob)
+                        })
+                    Swal.fire('Deleted!', 'Your product has been deleted.', 'success');
+                }
+            });
+    }
     return (
         <div className="mt-20 mb-20">
             {myJob.length > 0 ? <div className="overflow-x-auto">
@@ -29,7 +57,7 @@ const Myjobs = () => {
 
                             <th>Company Name & Location</th>
                             <th>Title</th>
-                            <th>Job Posted By</th>
+                            <th>Job Category</th>
                             <th>Salary Range</th>
                             <th></th>
                         </tr>
@@ -58,15 +86,17 @@ const Myjobs = () => {
                                     <br />
                                     <span className={`badge badge-ghost badge-sm ${isDeadlinePassed(item.deadline) ? 'text-red-500' : 'text-green-500'}`}>Deadline: {item.deadline}</span>
                                 </td>
-                                <td>{item.person_name}</td>
+                                <td>{item.category}</td>
                                 <td>
                                     {item.salary_range}
                                 </td>
                                 <th className="">
-                                    <Link>
-                                        <button className="btn btn-ghost btn-xs normal-case bg-green-200 mr-2">Update Job</button></Link>
-                                    <Link>
-                                        <button className="btn btn-ghost btn-xs normal-case bg-red-200 ">Delete Job</button></Link>
+
+                                    <button className="btn btn-ghost btn-xs normal-case bg-green-200 mr-2">Update Job</button>
+
+                                    <button onClick={() => {
+                                        handleDelete(item._id)
+                                    }} className="btn btn-ghost btn-xs normal-case bg-red-200 ">Delete Job</button>
                                 </th>
                             </tr>
                         ))}
