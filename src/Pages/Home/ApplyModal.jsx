@@ -8,7 +8,9 @@ const ApplyModal = ({ jobDetails }) => {
     console.log(jobDetails);
     const { user } = useContext(AuthContext)
     console.log(jobDetails);
-    const { _id, category, title, logo, description, skills, location, deadline, salary_range, company_name, person_name, applicants
+    const { _id, category, title, logo, description, skills, location, deadline, salary_range, company_name, person_name, applicants,
+        posted_date
+
     } = jobDetails;
 
 
@@ -21,7 +23,9 @@ const ApplyModal = ({ jobDetails }) => {
 
 
         const submitData = {
-            name, email, link, category, title, logo, description, skills, location, deadline, salary_range, company_name, person_name, jobId: _id, applicants
+            name, email, link, category, title, logo, description, skills, location, deadline, salary_range, company_name, person_name, jobId: _id, applicants,
+            posted_date
+
 
         }
         const modal = document.getElementById('my_modal_5');

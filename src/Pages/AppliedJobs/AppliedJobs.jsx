@@ -15,7 +15,7 @@ const AppliedJobs = () => {
     const componentRef = useRef();
 
     useEffect(() => {
-        axios.get(url,{withCredentials:true})
+        axios.get(url, { withCredentials: true })
             .then(res => {
                 setMyjob(res.data);
                 setLoading(false);
@@ -40,7 +40,9 @@ const AppliedJobs = () => {
 
     const filteredJobs = myJob.filter((item) =>
         filterCategory === "" ? true : item.category === filterCategory
+
     );
+
 
 
     const handlePrint = useReactToPrint({
@@ -79,14 +81,16 @@ const AppliedJobs = () => {
                                 </select></div>
                         </div>
                         <div><h1 className="text-center text-2xl font-semibold -mt-5">Applications Dashboard</h1></div>
-                        <table className="table mt-10 mb-20 max-w-screen-lg mx-auto">
+                        <table className="table mt-10 mb-20 ">
                             <thead>
                                 <tr>
                                     <th>Company Name & Location</th>
-                                    <th>Title</th>
+                                    <th>Job Title</th>
+                                    <th>Job Posted By</th>
                                     <th>Job Category</th>
                                     <th>Salary Range</th>
-                                    <th></th>
+                                    <th>Applicant</th>
+                                    <th>Description</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -115,8 +119,20 @@ const AppliedJobs = () => {
                                                 Deadline: {item.deadline}
                                             </span>
                                         </td>
+                                        <td>
+                                            <span className="font-semibold">{item.
+                                                person_name}</span>
+                                            <br />
+                                            <span>
+                                                PostedDate:{item.
+                                                    posted_date
+                                                }
+                                            </span>
+                                        </td>
                                         <td>{item.category}</td>
                                         <td>{item.salary_range}</td>
+                                        <td>{item.applicants}</td>
+                                        <td>{item.description}</td>
                                     </tr>
                                 ))}
                             </tbody>

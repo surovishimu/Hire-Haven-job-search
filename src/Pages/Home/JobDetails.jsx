@@ -9,9 +9,14 @@ import { AuthContext } from "../../Provider/AuthProvide";
 
 const JobDetails = () => {
     const jobDetails = useLoaderData();
+
+
     const { category, title, logo, description, skills, location, deadline, salary_range, company_name, person_name
     } = jobDetails;
     const { user } = useContext(AuthContext);
+
+
+
     return (
         <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 pt-10 pb-10">
             <div className="mt-28 mb-10 bg-purple-300 py-20 px-10 max-w-screen-lg mx-auto rounded-xl " >
