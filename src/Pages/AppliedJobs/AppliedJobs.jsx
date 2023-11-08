@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import noJobimg from "../../../public/image/cancel.png";
 import { useReactToPrint } from "react-to-print";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 const AppliedJobs = () => {
     const [myJob, setMyjob] = useState([]);
@@ -14,16 +15,21 @@ const AppliedJobs = () => {
     const componentRef = useRef();
 
     useEffect(() => {
-        fetch(url)
-            .then((res) => res.json())
-            .then((data) => {
-                setMyjob(data);
+        axios.get(url,{withCredentials:true})
+            .then(res => {
+                setMyjob(res.data);
                 setLoading(false);
             })
-            .catch((error) => {
-                setLoading(false);
-                console.error("Error fetching data:", error);
-            });
+        // fetch(url)
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         setMyjob(data);
+        //         setLoading(false);
+        //     })
+        //     .catch((error) => {
+        //         setLoading(false);
+        //         console.error("Error fetching data:", error);
+        //     });
     }, [url]);
 
     function isDeadlinePassed(deadline) {

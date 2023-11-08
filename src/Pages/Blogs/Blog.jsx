@@ -21,7 +21,9 @@ const Blog = () => {
                         store them on the client-side?
                     </div>
                     <div className="collapse-content">
-                        <p>Access tokens enable clients to securely call protected web APIs. Web APIs use access tokens to perform authentication and authorization.</p> <br />
+                        <p>Access tokens enable clients to securely call protected web APIs. Web APIs use access tokens to perform authentication and authorization.An access token is a short-lived credential that grants a client  permission to access specific resources or services on a server. It's often used in OAuth 2.0 for authorization.</p> <br />
+                        
+                        A refresh token is a long-lived credential used to obtain a new access token when the old one expires. It helps maintain user sessions without requiring frequent login.Refresh tokens are more secure than access tokens and are typically stored on the client-side (e.g., in a secure cookie or storage mechanism) to enable seamless and secure user sessions without frequent login prompts. 
                     </div>
                 </div>
                 <div className="collapse collapse-arrow join-item border border-base-300">
