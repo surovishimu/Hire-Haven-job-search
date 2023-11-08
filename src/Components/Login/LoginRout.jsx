@@ -4,6 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvide";
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import loginImg from "../../../public/image/login1.png"
+import { Helmet } from "react-helmet";
 
 const LoginRout = () => {
     const { signIn } = useContext(AuthContext)
@@ -34,7 +35,11 @@ const LoginRout = () => {
     }
     return (
         <>
-
+            <Helmet>
+                <title>
+                    Hire Haven | Sign In
+                </title>
+            </Helmet>
             <div className="hero min-h-screen bg-gradient-to-r from-purple-500 via-purple-600 to-blue-400 pt-20 ">
 
                 <div className="hero-content  ">

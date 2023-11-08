@@ -5,6 +5,7 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import noJobimg from "../../../public/image/cancel.png";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const Myjobs = () => {
     const [myJob, setMyjob] = useState([]);
@@ -61,7 +62,13 @@ const Myjobs = () => {
     }
 
     return (
-        <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 pb-60 ">
+       <div>
+         <Helmet>
+                <title>
+                    Hire Haven | My Job
+                </title>
+            </Helmet>
+         <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 pb-60 ">
             {loading ? (
                 <div className="flex justify-center items-center gap-4">
                    
@@ -135,6 +142,7 @@ const Myjobs = () => {
                 </div>
             )}
         </div>
+       </div>
     );
 };
 

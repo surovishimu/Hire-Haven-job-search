@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Provider/AuthProvide";
+import { Helmet } from "react-helmet";
 
 
 const AddAjob = () => {
@@ -69,7 +70,13 @@ const AddAjob = () => {
             })
     };
     return (
-        <div className=" p-6 flex lg:flex-row md:flex-col flex-col justify-around items-center bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 ">
+      <div>
+         <Helmet>
+                <title>
+                    Hire Haven | Add Job
+                </title>
+            </Helmet>
+          <div className=" p-6 flex lg:flex-row md:flex-col flex-col justify-around items-center bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 ">
             <div className="">
                 <img className="h-96" src="https://website-assets-fw.freshworks.com/attachments/cl02ejxkj02ugmjfnh0qs982y-freshteam-spot-illustration-how-to-post-a-job-on-linkedin-for-free.one-half.png" alt="" />
             </div>
@@ -228,9 +235,6 @@ const AddAjob = () => {
                             />
                         </div>
 
-
-
-
                     </div>
 
                     <div className="text-center">
@@ -244,6 +248,7 @@ const AddAjob = () => {
                 </form>
             </div>
         </div>
+      </div>
     );
 };
 

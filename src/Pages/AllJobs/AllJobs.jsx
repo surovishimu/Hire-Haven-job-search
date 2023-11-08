@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import noJobimg from "../../../public/image/cancel.png";
+import { Helmet } from "react-helmet";
 
 const AllJobs = () => {
     const allJobs = useLoaderData();
@@ -21,7 +22,14 @@ const AllJobs = () => {
     }
 
     return (
-        <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400">
+    <div>
+         <Helmet>
+                <title>
+                    Hire Haven | All Jobs
+                </title>
+            </Helmet>
+            <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400">
+            
             <div className="h-36 pt-20">
                 <h1 className="text-2xl font-semibold  text-center pt-5 mb-5">
                     Search and Apply for Jobs
@@ -109,6 +117,7 @@ const AllJobs = () => {
                 )}
             </div>
         </div>
+    </div>
     );
 };
 
