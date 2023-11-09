@@ -8,7 +8,7 @@ import { AuthContext } from "../../../Provider/AuthProvide";
 
 const Navbar = () => {
     const [isSticky, setIsSticky] = useState(false);
-    const { user, logOut, loading } = useContext(AuthContext)
+    const { user, logOut} = useContext(AuthContext)
 
     const activeLinkStyles = {
         color: 'white !important',
@@ -31,7 +31,7 @@ const Navbar = () => {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-   
+
     const links = <>
         {
             user?.email ? <> <li className="text-lg mr-2 font-semibold">
@@ -47,17 +47,17 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/alljobs"
-                        className="text-black" 
+                        className="text-black"
                         activeStyle={activeLinkStyles}
                     >
                         All Jobs
                     </NavLink>
                 </li>
-                
+
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/addajob"
-                        className="text-black" 
+                        className="text-black"
                         activeStyle={activeLinkStyles}
                     >
                         Add a Job
@@ -66,7 +66,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/myjobs"
-                        className="text-black" 
+                        className="text-black"
                         activeStyle={activeLinkStyles}
                     >
                         My Jobs
@@ -75,7 +75,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/appliedjobs"
-                        className="text-black" 
+                        className="text-black"
                         activeStyle={activeLinkStyles}
                     >
                         Applied Jobs
@@ -84,7 +84,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/blogs"
-                        className="text-black" 
+                        className="text-black"
                         activeStyle={activeLinkStyles}
                     >
                         Blog
@@ -104,7 +104,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/alljobs"
-                        className="text-black" 
+                        className="text-black"
                         activeStyle={activeLinkStyles}
                     >
                         All Jobs
@@ -113,7 +113,7 @@ const Navbar = () => {
                 <li className="text-lg mr-2 font-semibold">
                     <NavLink
                         to="/blogs"
-                        className="text-black" 
+                        className="text-black"
                         activeStyle={activeLinkStyles}
                     >
                         Blog
@@ -168,12 +168,12 @@ const Navbar = () => {
                             </ul>
                         </div>
                     </div> : <div className="navbar-end">
-                        {loading ? <span className="loading loading-spinner loading-sm"></span> : <>
-                            <Link to={"/login"}>
-                                <button className="btn text-white text-lg hover:bg-blue-500  bg-blue-500 outline-none border-none normal-case text-md">Login</button></Link>
 
-                        </>
-                        }
+                        <Link to={"/login"}>
+                            <button className="btn text-white text-lg hover:bg-blue-500  bg-blue-500 outline-none border-none normal-case text-md">Login</button></Link>
+
+
+
                     </div>
                 }
 

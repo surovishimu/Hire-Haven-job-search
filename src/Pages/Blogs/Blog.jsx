@@ -41,10 +41,43 @@ const Blog = () => {
                     <div className="collapse collapse-arrow join-item border border-base-300">
                         <input type="radio" name="my-accordion-4" />
                         <div className="collapse-title text-xl font-medium">
-
+                            Explain your Code
                         </div>
                         <div className="collapse-content">
-                            <p></p>
+                            <p>The project code is a web application developed with React and Express for job searching and posting. It incorporates packages like Axios, Firebase, and React-to-PDF to create a secure, user-friendly experience. Users can register, search for jobs, post job openings, and manage their applications. Key features include user authentication, job listing, employer capabilities, and a user dashboard. The codebase ensures data privacy and security, delivering a seamless job search platform.</p>
+
+                            <h1><strong>Frontend</strong></h1>
+                            <p>The frontend of the project is built using React and leverages packages like React Router for routing and React-to-PDF for generating PDF summaries. It comprises various components and pages that enable user interaction, job posting, job search, and job application management. Code snippets illustrate how these components work together.</p>
+
+                            <h1><strong>Backend</strong></h1>
+                            <p>The server-side code is implemented with Express and serves as the backend for the application. It defines APIs and routes for user registration, login, job management, and more. The backend processes requests, interacts with the database, and sends responses to the frontend.</p>
+
+                            <h1><strong>Authentication</strong></h1>
+                            <p>User authentication is a crucial part of the project. Code examples demonstrate how users can register and log in securely. Authentication ensures that only registered users can access certain features like posting and managing jobs.</p>
+
+                            <h1><strong>Database</strong></h1>
+                            <p>The database structure is outlined, including the models used to store user data, job listings, and job applications. The code illustrates interactions with the database to retrieve and update information.</p>
+
+                            <h1><strong>Job Posting</strong></h1>
+                            <p>Code snippets showcase how users can post job openings. Employers can add job details, such as title, category, salary range, and application deadline. They can also update or delete job listings.</p>
+
+                            <h1><strong>Job Search</strong></h1>
+                            <p>The job search functionality is explained with code examples. Users can search for jobs based on keywords, and filtering options by job category. The code demonstrates how the frontend communicates with the backend to retrieve relevant job listings.</p>
+
+                            <h1><strong>User Dashboard</strong></h1>
+                            <p>Users have a dashboard where they can manage their posted jobs and view their job application history. The code reveals how users can update job details or delete job listings and applications.</p>
+
+                            <h1><strong>Download Job History</strong></h1>
+                            <p>Users can download a PDF summary of their job application history. Code snippets show how this feature works, allowing users to save their application details offline.</p>
+
+                            <h1><strong>Blog Section</strong></h1>
+                            <p>The project includes a blog section. The code snippets illustrate how to structure and manage blog content, including creating and displaying blog posts.</p>
+
+                            <h1><strong>FAQs</strong></h1>
+                            <p>FAQs are implemented with code examples for easy access to commonly asked questions.</p>
+
+                            <p>This basic description provides an overview of your project code and its key components and features. Explore the code for a deeper understanding of how these elements are implemented.</p>
+
                         </div>
                     </div>
                 </div>

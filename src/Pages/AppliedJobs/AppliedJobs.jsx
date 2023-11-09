@@ -11,7 +11,7 @@ const AppliedJobs = () => {
     const [loading, setLoading] = useState(true);
     const [filterCategory, setFilterCategory] = useState("");
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/candidates?email=${user?.email}`;
+    const url = `https://job-service-server.vercel.app/candidates?email=${user?.email}`;
     const componentRef = useRef();
 
     useEffect(() => {

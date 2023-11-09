@@ -8,11 +8,12 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 
+
 const Myjobs = () => {
     const [myJob, setMyjob] = useState([]);
     const [loading, setLoading] = useState(true); // Add loading state
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/categories?email=${user?.email}`;
+    const url = `https://job-service-server.vercel.app/categories?email=${user?.email}`;
 
     useEffect(() => {
         axios.get(url)
@@ -20,6 +21,7 @@ const Myjobs = () => {
                 setMyjob(res.data);
                 setLoading(false);
             })
+
         // fetch(url)
         //     .then((res) => res.json())
         //     .then((data) => {
@@ -52,7 +54,7 @@ const Myjobs = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/categories/${id}`, {
+                    fetch(`https://job-service-server.vercel.app/categories/${id}`, {
                         method: 'DELETE',
                     })
                         .then((res) => res.json())
@@ -74,7 +76,7 @@ const Myjobs = () => {
                     Hire Haven | My Job
                 </title>
             </Helmet>
-            <div className="bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 pb-60 ">
+            <div className=" bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 pb-60 ">
                 {loading ? (
                     <div className="flex justify-center items-center gap-4">
 

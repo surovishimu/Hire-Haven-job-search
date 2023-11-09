@@ -48,7 +48,7 @@ const AddAjob = () => {
 
         }
 
-        fetch('http://localhost:5000/categories', {
+        fetch('https://job-service-server.vercel.app/categories', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
@@ -70,185 +70,185 @@ const AddAjob = () => {
             })
     };
     return (
-      <div>
-         <Helmet>
+        <div>
+            <Helmet>
                 <title>
                     Hire Haven | Add Job
                 </title>
             </Helmet>
-          <div className=" p-6 flex lg:flex-row md:flex-col flex-col justify-around items-center bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 ">
-            <div className="">
-                <img className="h-96" src="https://website-assets-fw.freshworks.com/attachments/cl02ejxkj02ugmjfnh0qs982y-freshteam-spot-illustration-how-to-post-a-job-on-linkedin-for-free.one-half.png" alt="" />
-            </div>
-            <div className="mx-auto mt-28 mb-10 p-5 bg-white rounded-lg shadow-2xl ">
+            <div className=" p-6 flex lg:flex-row md:flex-col flex-col justify-around items-center bg-gradient-to-r from-purple-400 via-purple-500 to-blue-400 ">
+                <div className="">
+                    <img className="h-96" src="https://website-assets-fw.freshworks.com/attachments/cl02ejxkj02ugmjfnh0qs982y-freshteam-spot-illustration-how-to-post-a-job-on-linkedin-for-free.one-half.png" alt="" />
+                </div>
+                <div className="mx-auto mt-28 mb-10 p-5 bg-white rounded-lg shadow-2xl ">
 
-                <form onSubmit={handleAddJob} className="">
-                    <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
-                        <div className="mb-4">
-                            <label htmlFor="image" className="block text-gray-700 font-bold">
-                                Banner Image
-                            </label>
-                            <input
-                                required
-                                type="text"
-                                id="image"
-                                name="image"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="company_name" className="block text-gray-700 font-bold">
-                                Company Name
-                            </label>
-                            <input
-                                required
-                                type="text"
-                                id="company_name"
-                                name="company_name"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
+                    <form onSubmit={handleAddJob} className="">
+                        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+                            <div className="mb-4">
+                                <label htmlFor="image" className="block text-gray-700 font-bold">
+                                    Banner Image
+                                </label>
+                                <input
+                                    required
+                                    type="text"
+                                    id="image"
+                                    name="image"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="company_name" className="block text-gray-700 font-bold">
+                                    Company Name
+                                </label>
+                                <input
+                                    required
+                                    type="text"
+                                    id="company_name"
+                                    name="company_name"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label htmlFor="name" className="block text-gray-700 font-bold">
+                                    Title
+                                </label>
+                                <input
+                                    required
+                                    type="text"
+                                    id="name"
+                                    name="title"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="name" className="block text-gray-700 font-bold">
+                                    User Name
+                                </label>
+                                <input
+                                    defaultValue={user.displayName
+                                    }
+                                    type="text"
+                                    id="name"
+                                    name="person_name"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="brand" className="block text-gray-700 font-bold">
+                                    Job Category
+                                </label>
+                                <select
+                                    id="category"
+                                    name="category"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                >
+                                    <option value="On Site Job">On Site Job</option>
+                                    <option value="Remote Job">Remote Job</option>
+                                    <option value="Part Time">Part Time</option>
+                                    <option value="Hybrid">Hybrid</option>
+
+
+                                </select>
+                            </div>
+
+                            <div className="mb-4">
+                                <label htmlFor="type" className="block text-gray-700 font-bold">
+                                    Salary range
+                                </label>
+                                <input
+                                    type="text"
+                                    id="type"
+                                    name="salary"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label htmlFor="price" className="block text-gray-700 font-bold">
+                                    Job Posting Date
+                                </label>
+                                <input
+                                    type="date"
+                                    id="postingDate"
+                                    name="postingDate"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="applicationDeadline" className="block text-gray-700 font-bold">
+                                    Application Deadline
+                                </label>
+                                <DatePicker
+                                    selected={selectedDate}
+                                    onChange={(date) => setSelectedDate(date)}
+                                    id="applicationDeadline"
+                                    name="deadline"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label htmlFor="applicant" className="block text-gray-700 font-bold">
+                                    Job Applicants Number
+                                </label>
+                                <input
+                                    type="number"
+                                    id="applicant"
+                                    name="applicants"
+                                    defaultValue={0}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="skills" className="block text-gray-700 font-bold">
+                                    Skills
+                                </label>
+                                <input
+                                    type="text"
+                                    id="skills"
+                                    name="skills"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+                            <div className="mb-4">
+                                <label htmlFor="location" className="block text-gray-700 font-bold">
+                                    Location
+                                </label>
+                                <input
+                                    required
+                                    type="text"
+                                    id="location"
+                                    name="location"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+
+                            <div className="mb-4">
+                                <label htmlFor="shortDescription" className="block text-gray-700 font-bold">
+                                    Job Description
+                                </label>
+                                <textarea
+                                    id="shortDescription"
+                                    name="description"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                                />
+                            </div>
+
                         </div>
 
-                        <div className="mb-4">
-                            <label htmlFor="name" className="block text-gray-700 font-bold">
-                                Title
-                            </label>
-                            <input
-                                required
-                                type="text"
-                                id="name"
-                                name="title"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="name" className="block text-gray-700 font-bold">
-                                User Name
-                            </label>
-                            <input
-                                defaultValue={user.displayName
-                                }
-                                type="text"
-                                id="name"
-                                name="person_name"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="brand" className="block text-gray-700 font-bold">
-                                Job Category
-                            </label>
-                            <select
-                                id="category"
-                                name="category"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
+                        <div className="text-center">
+                            <button
+                                type="submit"
+                                className="bg-purple-500 text-white py-2 px-4 rounded-md hover:purple-500   w-full outline-none text-lg"
                             >
-                                <option value="On Site Job">On Site Job</option>
-                                <option value="Remote Job">Remote Job</option>
-                                <option value="Part Time">Part Time</option>
-                                <option value="Hybrid">Hybrid</option>
-
-
-                            </select>
+                                Post Job
+                            </button>
                         </div>
-
-                        <div className="mb-4">
-                            <label htmlFor="type" className="block text-gray-700 font-bold">
-                                Salary range
-                            </label>
-                            <input
-                                type="text"
-                                id="type"
-                                name="salary"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-
-                        <div className="mb-4">
-                            <label htmlFor="price" className="block text-gray-700 font-bold">
-                                Job Posting Date
-                            </label>
-                            <input
-                                type="date"
-                                id="postingDate"
-                                name="postingDate"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="applicationDeadline" className="block text-gray-700 font-bold">
-                                Application Deadline
-                            </label>
-                            <DatePicker
-                                selected={selectedDate}
-                                onChange={(date) => setSelectedDate(date)}
-                                id="applicationDeadline"
-                                name="deadline"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-
-                        <div className="mb-4">
-                            <label htmlFor="applicant" className="block text-gray-700 font-bold">
-                                Job Applicants Number
-                            </label>
-                            <input
-                                type="number"
-                                id="applicant"
-                                name="applicants"
-                                defaultValue={0}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="skills" className="block text-gray-700 font-bold">
-                                Skills
-                            </label>
-                            <input
-                                type="text"
-                                id="skills"
-                                name="skills"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="location" className="block text-gray-700 font-bold">
-                                Location
-                            </label>
-                            <input
-                                required
-                                type="text"
-                                id="location"
-                                name="location"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-
-                        <div className="mb-4">
-                            <label htmlFor="shortDescription" className="block text-gray-700 font-bold">
-                                Job Description
-                            </label>
-                            <textarea
-                                id="shortDescription"
-                                name="description"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none "
-                            />
-                        </div>
-
-                    </div>
-
-                    <div className="text-center">
-                        <button
-                            type="submit"
-                            className="bg-purple-500 text-white py-2 px-4 rounded-md hover:purple-500   w-full outline-none text-lg"
-                        >
-                            Post Job
-                        </button>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-      </div>
     );
 };
 

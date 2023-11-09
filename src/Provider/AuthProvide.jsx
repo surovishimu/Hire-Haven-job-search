@@ -15,6 +15,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    // console.log(user);
 
     const googleLogin = () => {
         setLoading(true)
@@ -35,19 +36,28 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password)
     }
     const logOut = () => {
+
         toast.success('You have been logged out.')
         return signOut(auth);
     }
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            const userEmail = currentUser?.email || user.email;
+            const loggedUser = { email: userEmail }
             setUser(currentUser);
             console.log('current user', currentUser);
             setLoading(false)
 
             if (currentUser) {
-                const loggedUser = { email: currentUser.email }
-                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+
+                axios.post('https://job-service-server.vercel.app/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
+            else {
+                axios.post('https://job-service-server.vercel.app/logout', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log(res.data);
                     })
@@ -57,7 +67,7 @@ const AuthProvider = ({ children }) => {
             return unsubscribe;
         }
 
-    }, [])
+    }, [user])
     const authInfo = {
         user,
         loading,

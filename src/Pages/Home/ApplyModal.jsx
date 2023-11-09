@@ -34,7 +34,7 @@ const ApplyModal = ({ jobDetails }) => {
         if (modal) {
             modal.close();
         }
-        fetch('http://localhost:5000/candidates', {
+        fetch('https://job-service-server.vercel.app/candidates', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
